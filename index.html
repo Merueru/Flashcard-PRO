@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flashcard Pro - V.1.5.4 </title>
+    <title>Flashcard Pro - V.1.5.5 </title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔖</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
@@ -63,7 +63,7 @@
     <div id="loadingOverlay" class="fixed inset-0 z-[100] bg-slate-900 flex flex-col items-center justify-center text-white">
         <div class="w-16 h-16 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mb-4"></div>
         <h2 class="text-xl font-bold animate-pulse">กำลังโหลดข้อมูล...</h2>
-        <p class="text-sm text-slate-400 mt-2">Flashcard Pro 1.5.4</p>
+        <p class="text-sm text-slate-400 mt-2">Flashcard Pro 1.5.5</p>
     </div>
 
     <nav class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b dark:border-slate-800 px-4 md:px-6 py-3 flex justify-between items-center sticky top-0 z-50 transition-colors">
@@ -71,7 +71,7 @@
             <div class="flex items-center space-x-2 cursor-pointer group" onclick="toggleView('play')">
                 <div class="bg-indigo-600 p-2.5 rounded-xl text-white shadow-lg shadow-indigo-500/30 group-hover:scale-110 transition-transform"><i class="fas fa-brain"></i></div>
                 <h1 class="text-xl font-bold tracking-tight hidden md:block">Flashcard <span class="text-indigo-600 dark:text-indigo-400">Pro</span>
-                <span class="text-xs bg-emerald-500 text-white px-1.5 py-0.5 rounded ml-1">v1.5.4</span></h1>
+                <span class="text-xs bg-emerald-500 text-white px-1.5 py-0.5 rounded ml-1">v1.5.5</span></h1>
             </div>
             <div class="hidden lg:flex items-center space-x-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-2xl">
                 <button onclick="toggleView('manage')" class="px-4 py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-700 hover:shadow-sm transition flex items-center">
@@ -202,14 +202,14 @@
                 
                 <div class="relative">
                     <button id="btnSort" onclick="toggleDropdown('sortDropdown', event)" class="dropdown-btn flex items-center justify-between space-x-2 bg-slate-50 dark:bg-slate-800 rounded-xl px-5 py-3 font-bold text-sm min-w-[150px] border border-transparent focus:border-indigo-500 transition text-slate-600 dark:text-slate-300">
-                        <span><i class="fas fa-sort mr-2 text-slate-400"></i> <span id="currentSortLabel">ล่าสุด</span></span> <i class="fas fa-chevron-down text-xs opacity-50"></i>
+                        <span><i class="fas fa-sort mr-2 text-slate-400"></i> <span data-i18n="current_sort" id="currentSortLabel"></span></span> <i class="fas fa-chevron-down text-xs opacity-50"></i>
                     </button>
                     <div id="sortDropdown" onclick="event.stopPropagation()" class="dropdown-content absolute right-0 top-full mt-2 w-48 bg-white dark:bg-slate-900 rounded-2xl shadow-xl border dark:border-slate-800 p-2 hidden z-20">
-                         <button onclick="toggleSort('newest')" class="w-full text-left px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl flex justify-between items-center"><span>ล่าสุด (Newest)</span> <i class="fas fa-check text-indigo-500 hidden" id="sortCheck_newest"></i></button>
-                         <button onclick="toggleSort('oldest')" class="w-full text-left px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl flex justify-between items-center"><span>เก่าสุด (Oldest)</span> <i class="fas fa-check text-indigo-500 hidden" id="sortCheck_oldest"></i></button>
+                         <button onclick="toggleSort('newest')" class="w-full text-left px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl flex justify-between items-center"><span data-i18n="sort_newest">ล่าสุด</span> <i class="fas fa-check text-indigo-500 hidden" id="sortCheck_newest"></i></button>
+                         <button onclick="toggleSort('oldest')" class="w-full text-left px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl flex justify-between items-center"><span data-i18n="sort_oldest">เก่าสุด</span> <i class="fas fa-check text-indigo-500 hidden" id="sortCheck_oldest"></i></button>
                          <div class="h-px bg-slate-100 dark:bg-slate-800 my-1"></div>
-                         <button onclick="toggleSort('az')" class="w-full text-left px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl flex justify-between items-center"><span>เรียงตัวอักษร (A-Z)</span> <i class="fas fa-check text-indigo-500 hidden" id="sortCheck_az"></i></button>
-                         <button onclick="toggleSort('za')" class="w-full text-left px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl flex justify-between items-center"><span>เรียงตัวอักษร (Z-A)</span> <i class="fas fa-check text-indigo-500 hidden" id="sortCheck_za"></i></button>
+                         <button onclick="toggleSort('az')" class="w-full text-left px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl flex justify-between items-center"><span data-i18n="sort_az">A-Z</span> <i class="fas fa-check text-indigo-500 hidden" id="sortCheck_az"></i></button>
+                         <button onclick="toggleSort('za')" class="w-full text-left px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl flex justify-between items-center"><span data-i18n="sort_za">Z-A</span> <i class="fas fa-check text-indigo-500 hidden" id="sortCheck_za"></i></button>
                     </div>
                 </div>
 
@@ -448,8 +448,12 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div class="space-y-2">
                             <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1" data-i18n="form_cat">หมวดหมู่</label>
-                            <input type="text" id="eCat" list="catList" class="w-full p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border-2 border-transparent focus:border-indigo-500 outline-none font-bold" placeholder="ทั่วไป">
-                            <datalist id="catList"></datalist>
+                            <div class="relative">
+                                <input type="text" id="eCat" onfocus="openCatDropdown()" onblur="closeCatDropdown()" oninput="filterCatDropdown()" class="w-full p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border-2 border-transparent focus:border-indigo-500 outline-none font-bold" autocomplete="off" placeholder="ทั่วไป">
+                                <div id="catDropdown" class="hidden absolute top-full mt-2 w-full max-h-60 overflow-y-auto custom-scrollbar bg-white dark:bg-slate-900 rounded-2xl shadow-xl border dark:border-slate-800 p-2 z-20">
+                                    <!-- Categories go here -->
+                                </div>
+                            </div>
                         </div>
                         <div class="space-y-2">
                             <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1" data-i18n="form_tag">แท็ก (คั่นด้วย ,)</label>
@@ -507,12 +511,12 @@
 
              <div class="grid gap-2 mb-2 px-4 text-[10px] font-black uppercase text-slate-400 tracking-widest" id="bulkHeader" style="grid-template-columns: 30px 1fr 1fr;">
                 <div>#</div>
-                <div>คำศัพท์</div>
-                <div>ความหมาย</div>
-                <div class="col-reading hidden">คำอ่าน</div>
-                <div class="col-cat hidden">หมวดหมู่</div>
-                <div class="col-tag hidden">แท็ก (คั่นด้วย ,)</div>
-                <div class="col-hint hidden">Hint</div>
+                <div data-i18n="thebulkword">คำศัพท์</div>
+                <div data-i18n="thebulkmeaning">ความหมาย</div>
+                <div class="col-reading hidden" data-i18n="thebulkreading">คำอ่าน</div>
+                <div class="col-cat hidden" data-i18n="thebulkcat">หมวดหมู่</div>
+                <div class="col-tag hidden" data-i18n="thebulktag">แท็ก (คั่นด้วย ,)</div>
+                <div class="col-hint hidden" data-i18n="thebulkhint">คำใบ้</div>
                 <div></div>
             </div>
 
@@ -520,11 +524,10 @@
                  <div id="bulkContainer" class="overflow-y-auto custom-scrollbar p-2 h-full space-y-2"></div>
             </div>
 
-            <datalist id="bulkCatList"></datalist>
             <datalist id="bulkTagList"></datalist>
 
             <div class="flex gap-3 flex-shrink-0">
-                <button onclick="saveBulkDraftState(); showToast('บันทึกร่างแล้ว')" class="flex-1 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 py-4 rounded-2xl font-black uppercase tracking-widest border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition">บันทึกร่าง</button>
+                <button onclick="saveBulkDraftState(); showToast('บันทึกร่างแล้ว')" class="flex-1 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 py-4 rounded-2xl font-black uppercase tracking-widest border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition" data-i18n="btn_save_draft">บันทึกร่าง</button>
                 <button onclick="saveBulk()" class="flex-[3] bg-indigo-600 text-white py-4 rounded-2xl font-black uppercase tracking-widest shadow-xl shadow-indigo-500/30 hover:bg-indigo-700 transition" data-i18n="btn_save">บันทึกข้อมูลทั้งหมด</button>
             </div>
         </div>
@@ -694,7 +697,11 @@
                 txt_confirm_del_profile: "ลบโปรไฟล์นี้?", txt_warn_profile: "ข้อมูลและคำศัพท์ทั้งหมดจะหายไป", txt_double_confirm: "กดลบแล้วจะเอาคืนไม่ได้",
                 txt_confirm_del_group: "ลบรายการที่เลือก?", txt_deleted: "ลบแล้ว", txt_no_words: "ไม่มีคำศัพท์",
                 txt_no_stats: "ยังไม่มีข้อมูล", txt_no_history: "ยังไม่มีประวัติการเล่น", txt_confirm_clear: "ล้างสถิติ?",
-                txt_forgot_count: "ลืม %n ครั้ง" , msg_exit_quiz: "ออกจากแบบทดสอบ?"
+                txt_forgot_count: "ลืม %n ครั้ง" , msg_exit_quiz: "ออกจากแบบทดสอบ?",
+                placeholder_volcab_word: "คำศัพท์...", placeholder_volcab_meaning: "ความหมาย...", placeholder_volcab_reading: "คำอ่าน...",
+                btn_save_draft: "บันทึกร่าง", placeholder_volcab_category: "หมวดหมู่", placeholder_volcab_tag: "แท็ก1,แท็ก2...",placeholder_volcab_hint: "คำใบ้",
+                thebulkword: "คำศัพท์", thebulkmeaning: "ความหมาย", thebulkreading: "คำอ่าน", thebulkcat: "หมวดหมู่", thebulktag: "แท็ก", thebulkhint: "คำใบ้",
+                current_sort:"ล่าสุด",sort_newest:"ล่าสุด", sort_oldest:"เก่าสุด", sort_az:"A-Z", sort_za:"Z-A"
             },
             en: {
                 placeholder_username: "Type user name...",
@@ -727,9 +734,10 @@
                 txt_confirm_del_group: "Delete selected?", txt_deleted: "Deleted", txt_no_words: "No words found",
                 txt_no_stats: "No data", txt_no_history: "No history", txt_confirm_clear: "Clear statistics?",
                 txt_forgot_count: "Forgot %n times" , msg_exit_quiz: "Exit quiz?",
-                placeholder_volcab_word: "Type word...",
-                placeholder_volcab_meaning: "Type meaning...",
-                placeholder_volcab_reading: "Type reading..."
+                placeholder_volcab_word: "word...", placeholder_volcab_meaning: "meaning...", placeholder_volcab_reading: "reading...",
+                btn_save_draft: "Save Draft", placeholder_volcab_category: "category", placeholder_volcab_tag: "tag1,tag2...",placeholder_volcab_hint: "hint",
+                thebulkword: "Word", thebulkmeaning: "Meaning", thebulkreading: "Reading", thebulkcat: "Category", thebulktag: "Tags", thebulkhint: "Hint",
+                current_sort:"Newest",sort_newest:"Newest", sort_oldest:"Oldest", sort_az:"A-Z", sort_za:"Z-A"
                 
             },
             jp: {
@@ -763,9 +771,13 @@
                 txt_no_stats: "データなし", txt_no_history: "履歴なし", txt_confirm_clear: "統計を消去しますか？",
                 txt_forgot_count: "忘れた回数: %n",
                 msg_exit_quiz: "クイズを終了しますか？",
-                placeholder_volcab_word: "単語を入力...",
-                placeholder_volcab_meaning: "意味を入力...",
-                placeholder_volcab_reading: "読みを入力..."
+                placeholder_volcab_word: "単語...",
+                placeholder_volcab_meaning: "意味...",
+                placeholder_volcab_reading: "読み...",
+                btn_save_draft: "下書き保存",
+                placeholder_volcab_category: "カテゴリ", placeholder_volcab_tag: "タグ1,タグ2...",placeholder_volcab_hint: "ヒント",
+                thebulkword: "単語", thebulkmeaning: "意味", thebulkreading: "読み", thebulkcat: "カテゴリ", thebulktag: "タグ", thebulkhint: "ヒント",
+                current_sort:"最新",sort_newest:"最新", sort_oldest:"最古", sort_az:"A-Z", sort_za:"Z-A"
             },
             cn: {
                 placeholder_username: "输入用户名...",
@@ -798,9 +810,12 @@
                 txt_no_stats: "无数据", txt_no_history: "无历史记录", txt_confirm_clear: "清除统计？",
                 txt_forgot_count: "忘记 %n 次",
                 msg_exit_quiz: "退出测验？",
-                placeholder_volcab_word: "输入词汇...",
-                placeholder_volcab_meaning: "输入释义...",
-                placeholder_volcab_reading: "输入拼音/读音..."
+                placeholder_volcab_word: "词汇...",
+                placeholder_volcab_meaning: "释义...",
+                placeholder_volcab_reading: "拼音/读音...",
+                btn_save_draft: "保存草稿",placeholder_volcab_category: "分类", placeholder_volcab_tag: "标签1,标签2...",placeholder_volcab_hint: "提示",
+                thebulkword: "词汇", thebulkmeaning: "释义", thebulkreading: "拼音/读音", thebulkcat: "分类", thebulktag: "标签", thebulkhint: "提示",
+                current_sort:"最新",sort_newest:"最新", sort_oldest:"最旧", sort_az:"A-Z", sort_za:"Z-A"
             },
             kr: {
                 placeholder_username: "플레이어 이름 입력...",
@@ -833,9 +848,12 @@
                 txt_confirm_del_group: "선택한 항목을 삭제할까요?", txt_deleted: "삭제됨", txt_no_words: "단어 없음",
                 txt_no_stats: "데이터 없음", txt_no_history: "플레이 기록 없음", txt_confirm_clear: "통계를 초기화할까요?", txt_forgot_count: "%n번 잊음",
                 msg_exit_quiz: "학습을 종료하시겠습니까?",
-                placeholder_volcab_word: "단어를 입력하세요...",
-                placeholder_volcab_meaning: "의미를 입력하세요...",
-                placeholder_volcab_reading: "발음을 입력하세요..."
+                placeholder_volcab_word: "단어 입력...",
+                placeholder_volcab_meaning: "의미 입력...",
+                placeholder_volcab_reading: "발음 입력...",
+                btn_save_draft: "초안 저장",placeholder_volcab_category: "카테고리", placeholder_volcab_tag: "태그1,태그2...",placeholder_volcab_hint: "힌트",
+                thebulkword: "단어", thebulkmeaning: "의미", thebulkreading: "발음", thebulkcat: "카테고리", thebulktag: "태그", thebulkhint: "힌트",
+                current_sort:"최신순",sort_newest:"최신순", sort_oldest:"오래된순", sort_az:"A-Z", sort_za:"Z-A"
             },
             fr: {
                 placeholder_username: "Nom du joueur...", 
@@ -870,7 +888,10 @@
                 msg_exit_quiz: "Quitter le quiz ?",
                 placeholder_volcab_word: "Entrez un mot...",
                 placeholder_volcab_meaning: "Entrez une définition...",
-                placeholder_volcab_reading: "Entrez une lecture..."
+                placeholder_volcab_reading: "Entrez une lecture...",
+                btn_save_draft: "Enregistrer le brouillon",placeholder_volcab_category: "Catégorie", placeholder_volcab_tag: "Tag1,Tag2...",placeholder_volcab_hint: "Indice",
+                thebulkword: "Mot", thebulkmeaning: "Définition", thebulkreading: "Lecture", thebulkcat: "Catégorie", thebulktag: "Tags", thebulkhint: "Indice",
+                current_sort:"Plus récent",sort_newest:"Plus récent", sort_oldest:"Plus ancien", sort_az:"A-Z", sort_za:"Z-A"
             },
             es: {
                 placeholder_username: "Nombre del jugador...",
@@ -905,7 +926,10 @@
                 msg_exit_quiz: "¿Salir del examen?",
                 placeholder_volcab_word: "Escribe una palabra...",
                 placeholder_volcab_meaning: "Escribe un significado...",
-                placeholder_volcab_reading: "Escribe una lectura..."
+                placeholder_volcab_reading: "Escribe una lectura...",
+                btn_save_draft: "Guardar borrador",placeholder_volcab_category: "Categoría", placeholder_volcab_tag: "Etiqueta1,Etiqueta2...",placeholder_volcab_hint: "Pista",
+                thebulkword: "Palabra", thebulkmeaning: "Significado", thebulkreading: "Lectura", thebulkcat: "Categoría", thebulktag: "Etiquetas", thebulkhint: "Pista",
+                current_sort:"Más reciente",sort_newest:"Más reciente", sort_oldest:"Más antiguo", sort_az:"A-Z", sort_za:"Z-A"
             },
             de: {
                 placeholder_username: "Spielername eingeben...",
@@ -940,7 +964,10 @@
                 msg_exit_quiz: "Quiz beenden?",
                 placeholder_volcab_word: "Wort eingeben...",
                 placeholder_volcab_meaning: "Bedeutung eingeben...",
-                placeholder_volcab_reading: "Lesung eingeben..."
+                placeholder_volcab_reading: "Lesung eingeben...",
+                btn_save_draft: "Entwurf speichern",placeholder_volcab_category: "Kategorie", placeholder_volcab_tag: "Tag1,Tag2...",placeholder_volcab_hint: "Hinweis",
+                thebulkword: "Wort", thebulkmeaning: "Bedeutung", thebulkreading: "Lesung", thebulkcat: "Kategorie", thebulktag: "Tags", thebulkhint: "Hinweis",
+                current_sort:"Neueste",sort_newest:"Neueste", sort_oldest:"Älteste", sort_az:"A-Z", sort_za:"Z-A"
             },
             it: {
                 placeholder_username: "Nome del giocatore...",
@@ -975,7 +1002,10 @@
                 msg_exit_quiz: "Uscire dal quiz?",
                 placeholder_volcab_word: "Inserisci una parola...",
                 placeholder_volcab_meaning: "Inserisci un significato...",
-                placeholder_volcab_reading: "Inserisci una lettura..."
+                placeholder_volcab_reading: "Inserisci una lettura...",
+                btn_save_draft: "Salva bozza",placeholder_volcab_category: "Categoria", placeholder_volcab_tag: "Tag1,Tag2...",placeholder_volcab_hint: "Suggerimento",
+                thebulkword: "Parola", thebulkmeaning: "Significato", thebulkreading: "Lettura", thebulkcat: "Categoria", thebulktag: "Tag", thebulkhint: "Suggerimento",
+                current_sort:"Più recente",sort_newest:"Più recente", sort_oldest:"Più vecchio", sort_az:"A-Z", sort_za:"Z-A"
             },
             ru: {
                 placeholder_username: "Введите имя игрока...",
@@ -1010,7 +1040,10 @@
                 msg_exit_quiz: "Выйти из квиза?",
                 placeholder_volcab_word: "Введите слово...",
                 placeholder_volcab_meaning: "Введите значение...",
-                placeholder_volcab_reading: "Введите чтение..."
+                placeholder_volcab_reading: "Введите чтение...",
+                btn_save_draft: "Сохранить черновик",placeholder_volcab_category: "Категория", placeholder_volcab_tag: "Тег1,Тег2...",placeholder_volcab_hint: "Подсказка",
+                thebulkword: "Слово", thebulkmeaning: "Значение", thebulkreading: "Чтение", thebulkcat: "Категория", thebulktag: "Теги", thebulkhint: "Подсказка",
+                current_sort:"Сначала новые",sort_newest:"Сначала новые", sort_oldest:"Сначала старые", sort_az:"A-Z", sort_za:"Z-A"
             },
             vn: {
                 placeholder_username: "Nhập tên người chơi...",
@@ -1045,7 +1078,10 @@
                 msg_exit_quiz: "Thoát bài kiểm tra?",
                 placeholder_volcab_word: "Nhập từ vựng...",
                 placeholder_volcab_meaning: "Nhập nghĩa...",
-                placeholder_volcab_reading: "Nhập phiên âm..."
+                placeholder_volcab_reading: "Nhập phiên âm...",
+                btn_save_draft: "Lưu nháp",placeholder_volcab_category: "Danh mục", placeholder_volcab_tag: "Thẻ1,Thẻ2...",placeholder_volcab_hint: "Gợi ý",
+                thebulkword: "Từ vựng", thebulkmeaning: "Nghĩa", thebulkreading: "Phiên âm", thebulkcat: "Danh mục", thebulktag: "Thẻ", thebulkhint: "Gợi ý",
+                current_sort:"Mới nhất",sort_newest:"Mới nhất", sort_oldest:"Cũ nhất", sort_az:"A-Z", sort_za:"Z-A"
             },
             id: {
                 placeholder_username: "Masukkan nama pemain...",
@@ -1080,7 +1116,10 @@
                 msg_exit_quiz: "Keluar dari kuis?",
                 placeholder_volcab_word: "Masukkan kata...",
                 placeholder_volcab_meaning: "Masukkan makna...",
-                placeholder_volcab_reading: "Masukkan pelafalan..."
+                placeholder_volcab_reading: "Masukkan pelafalan...",
+                btn_save_draft: "Simpan draf",placeholder_volcab_category: "Kategori", placeholder_volcab_tag: "Tag1,Tag2...",placeholder_volcab_hint: "Petunjuk",
+                thebulkword: "Kata", thebulkmeaning: "Makna", thebulkreading: "Pelafalan", thebulkcat: "Kategori", thebulktag: "Tag", thebulkhint: "Petunjuk",
+                current_sort:"Terbaru",sort_newest:"Terbaru", sort_oldest:"Terlama", sort_az:"A-Z", sort_za:"Z-A"
             },
             hi: {
                 placeholder_username: "खिलाड़ी का नाम लिखें...",
@@ -1115,7 +1154,10 @@
                 msg_exit_quiz: "प्रश्नावली से बाहर निकलें?",
                 placeholder_volcab_word: "एक शब्द लिखें...",
                 placeholder_volcab_meaning: "एक अर्थ लिखें...",
-                placeholder_volcab_reading: "एक उच्चारण लिखें..."
+                placeholder_volcab_reading: "एक उच्चारण लिखें...",
+                btn_save_draft: "ड्राफ्ट सहेजें",placeholder_volcab_category: "श्रेणी", placeholder_volcab_tag: "टैग1,टैग2...",placeholder_volcab_hint: "संकेत",
+                thebulkword: "शब्द", thebulkmeaning: "अर्थ", thebulkreading: "उच्चारण", thebulkcat: "श्रेणी", thebulktag: "टैग", thebulkhint: "संकेत",
+                current_sort:"नवीनतम",sort_newest:"नवीनतम", sort_oldest:"सबसे पुराना", sort_az:"A-Z", sort_za:"Z-A"
             },
             pl: {
                 placeholder_username: "Wpisz nazwę gracza...",
@@ -1150,7 +1192,10 @@
                 msg_exit_quiz: "Wyjść z quizu?",
                 placeholder_volcab_word: "Wpisz słowo...",
                 placeholder_volcab_meaning: "Wpisz znaczenie...",
-                placeholder_volcab_reading: "Wpisz wymowę..."
+                placeholder_volcab_reading: "Wpisz wymowę...",
+                btn_save_draft: "Zapisz szkic",placeholder_volcab_category: "Kategoria", placeholder_volcab_tag: "Tag1,Tag2...",placeholder_volcab_hint: "Wskazówka",
+                thebulkword: "Słowo", thebulkmeaning: "Znaczenie", thebulkreading: "Wymowa", thebulkcat: "Kategoria", thebulktag: "Tagi", thebulkhint: "Wskazówka",
+                current_sort:"Najnowsze",sort_newest:"Najnowsze", sort_oldest:"Najstarsze", sort_az:"A-Z", sort_za:"Z-A"
             },
             pt: {
                 placeholder_username: "Nome do jogador...",
@@ -1185,7 +1230,10 @@
                 msg_exit_quiz: "Sair do quiz?",
                 placeholder_volcab_word: "Digite uma palavra...",
                 placeholder_volcab_meaning: "Digite um significado...",
-                placeholder_volcab_reading: "Digite uma pronúncia..."
+                placeholder_volcab_reading: "Digite uma pronúncia...",
+                btn_save_draft: "Salvar rascunho",placeholder_volcab_category: "Categoria", placeholder_volcab_tag: "Tag1,Tag2...",placeholder_volcab_hint: "Dica",
+                thebulkword: "Palavra", thebulkmeaning: "Significado", thebulkreading: "Pronúncia", thebulkcat: "Categoria", thebulktag: "Tags", thebulkhint: "Dica",
+                current_sort:"Mais recentes",sort_newest:"Mais recentes", sort_oldest:"Mais antigos", sort_az:"A-Z", sort_za:"Z-A"
             }
         };
 
@@ -1531,14 +1579,50 @@
             }
         }
 
+        function openCatDropdown() {
+            document.getElementById('catDropdown').classList.remove('hidden');
+            filterCatDropdown(); // Show all/filtered
+        }
+        function closeCatDropdown() {
+            setTimeout(() => document.getElementById('catDropdown').classList.add('hidden'), 200); // Delay to allow click
+        }
+        function filterCatDropdown() {
+            const filter = document.getElementById('eCat').value.toLowerCase();
+            const dropdown = document.getElementById('catDropdown');
+            if (!dropdown) return;
+            const items = dropdown.children;
+            let hasVisibleItems = false;
+            for (const item of items) {
+                if (item.textContent.toLowerCase().includes(filter)) {
+                    item.style.display = '';
+                    hasVisibleItems = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            }
+            if(hasVisibleItems) dropdown.classList.remove('hidden');
+            else dropdown.classList.add('hidden');
+        }
+        function selectCat(catValue) {
+            document.getElementById('eCat').value = catValue;
+            document.getElementById('catDropdown').classList.add('hidden');
+        }
+
         function openEditModal(id = null) {
             const modal = document.getElementById('editModal');
             ['eWord','eReading','eDesc','eHint','eCat','eTags','editId'].forEach(k => document.getElementById(k).value = '');
             ['prevQImg','prevAImg','prevHImg'].forEach(k => clearImg(k)); 
 
-            const cats = [...new Set(flashcards.map(c => c.category))];
-            const catList = document.getElementById('catList');
-            catList.innerHTML = cats.map(c => `<option value="${c}">`).join('');
+            // Sort by most recent usage (approximated by card ID)
+            const sortedCards = [...flashcards].sort((a, b) => b.id - a.id);
+            const cats = [...new Set(sortedCards.map(c => c.category))].filter(c => c); // Filter out empty categories
+            const catDropdown = document.getElementById('catDropdown');
+            if(catDropdown) {
+                catDropdown.innerHTML = cats.map(c => `<div class="p-3 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl cursor-pointer" onmousedown="selectCat('${c.replace(/'/g, "\\'")}')">${c}</div>`).join('');
+            }
+            
+            const eCatInput = document.getElementById('eCat');
+            eCatInput.placeholder = t('placeholder_volcab_category') || 'General';
 
             const allTags = [...new Set(flashcards.flatMap(c => c.tags))];
             const tagContainer = document.getElementById('suggestedTags');
@@ -1690,9 +1774,9 @@
                 if(check) check.classList.add('hidden');
             });
             document.getElementById(`sortCheck_${currentSortMode}`).classList.remove('hidden');
-            const labels = { 'newest': 'ล่าสุด', 'oldest': 'เก่าสุด', 'az': 'A-Z', 'za': 'Z-A' };
-            const enLabels = { 'newest': 'Newest', 'oldest': 'Oldest', 'az': 'A-Z', 'za': 'Z-A' };
-            const label = currentLang === 'en' ? enLabels[currentSortMode] : labels[currentSortMode];
+            
+            const labelKey = `sort_${currentSortMode}`;
+            const label = t(labelKey);
             document.getElementById('currentSortLabel').innerText = label;
         }
 
@@ -1821,12 +1905,57 @@
              downloadJSON({ type: 'raw_cards', cards: cleanItems }, `cards_export.json`);
         }
         
+
+        function openBulkCatDropdown(idx) {
+            const dropdown = document.getElementById(`bulkCatDropdown-${idx}`);
+            if (!dropdown) return;
+
+            const sortedCards = [...flashcards].sort((a, b) => b.id - a.id);
+            const cats = [...new Set(sortedCards.map(c => c.category))].filter(c => c);
+
+            dropdown.innerHTML = cats.map(c => 
+                `<div class="p-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer" onmousedown="selectBulkCat(${idx}, '${c.replace(/'/g, "\\'")}')">${c}</div>`
+            ).join('');
+            
+            dropdown.classList.remove('hidden');
+            filterBulkCatDropdown(idx);
+        }
+
+        function closeBulkCatDropdown(idx) {
+            const dropdown = document.getElementById(`bulkCatDropdown-${idx}`);
+            if (dropdown) setTimeout(() => dropdown.classList.add('hidden'), 200);
+        }
+
+        function filterBulkCatDropdown(idx) {
+            const input = document.getElementById(`b-cat-${idx}`);
+            const dropdown = document.getElementById(`bulkCatDropdown-${idx}`);
+            if (!input || !dropdown) return;
+
+            const filter = input.value.toLowerCase();
+            const items = dropdown.children;
+            let hasVisibleItems = false;
+            for (const item of items) {
+                if (item.textContent.toLowerCase().includes(filter)) {
+                    item.style.display = '';
+                    hasVisibleItems = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            }
+            if(hasVisibleItems) dropdown.classList.remove('hidden');
+        }
+
+        function selectBulkCat(idx, catValue) {
+            const input = document.getElementById(`b-cat-${idx}`);
+            const dropdown = document.getElementById(`bulkCatDropdown-${idx}`);
+            if(input) input.value = catValue;
+            if(dropdown) dropdown.classList.add('hidden');
+        }
+
         function openBulkModal() {
             document.getElementById('bulkModal').classList.remove('hidden');
             
             // Populate Datalists
-            const cats = [...new Set(flashcards.map(c => c.category))];
-            document.getElementById('bulkCatList').innerHTML = cats.map(c => `<option value="${c}">`).join('');
             const tags = [...new Set(flashcards.flatMap(c => c.tags))];
             document.getElementById('bulkTagList').innerHTML = tags.map(t => `<option value="${t}">`).join('');
 
@@ -1940,14 +2069,20 @@
 
     div.innerHTML = `
         <div class="text-xs font-bold text-slate-300 pt-3 text-center">${idx}</div>
-        <input type="text" data-i18n-placeholder="placeholder_volcab_word" placeholder="คำศัพท์" class="b-word w-full p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border-none outline-none focus:ring-1 focus:ring-indigo-500 font-bold" value="${data.word||''}">
-        <input type="text" data-i18n-placeholder="placeholder_volcab_meaning" placeholder="ความหมาย" class="b-desc w-full p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border-none outline-none focus:ring-1 focus:ring-indigo-500" value="${data.desc||''}">
-        <input type="text" data-i18n-placeholder="placeholder_volcab_reading" placeholder="คำอ่าน" class="b-cell-reading ${isReading} b-reading w-full p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border-none outline-none focus:ring-1 focus:ring-indigo-500 text-xs" value="${data.reading||''}">
-        <input type="text" list="bulkCatList" placeholder="ทั่วไป" class="b-cell-cat ${isCat} b-cat w-full p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border-none outline-none focus:ring-1 focus:ring-indigo-500 text-xs font-bold text-indigo-500" value="${data.cat||''}">
+        <input type="text" data-i18n-placeholder="placeholder_volcab_word" placeholder="${t('placeholder_volcab_word')}" class="b-word w-full p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border-none outline-none focus:ring-1 focus:ring-indigo-500 font-bold" value="${data.word||''}">
+        <input type="text" data-i18n-placeholder="placeholder_volcab_meaning" placeholder="${t('placeholder_volcab_meaning')}" class="b-desc w-full p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border-none outline-none focus:ring-1 focus:ring-indigo-500" value="${data.desc||''}">
+        <input type="text" data-i18n-placeholder="placeholder_volcab_reading" placeholder="${t('placeholder_volcab_reading')}" class="b-cell-reading ${isReading} b-reading w-full p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border-none outline-none focus:ring-1 focus:ring-indigo-500 text-xs" value="${data.reading||''}">
+        <div class="b-cell-cat ${isCat} relative">
+            <input type="text" id="b-cat-${idx}" onfocus="openBulkCatDropdown(${idx})" onblur="closeBulkCatDropdown(${idx})" oninput="filterBulkCatDropdown(${idx})" class="b-cat w-full p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border-none outline-none focus:ring-1 focus:ring-indigo-500 text-xs font-bold text-indigo-500" value="${data.cat||''}" placeholder="${t('placeholder_volcab_category')}" autocomplete="off">
+            <div id="bulkCatDropdown-${idx}" class="hidden absolute top-full mt-1 w-full max-h-40 overflow-y-auto custom-scrollbar bg-white dark:bg-slate-900 rounded-xl shadow-xl border dark:border-slate-800 p-2 z-50">
+                <!-- Bulk category items will be injected here -->
+            </div>
+        </div>
         
         <div class="b-cell-tag ${isTag} relative group">
             <input type="text" 
-                   placeholder="Tag1, Tag2" 
+                   data-i18n-placeholder="placeholder_volcab_tag"
+                   placeholder="${t('placeholder_volcab_tag')}" 
                    oninput="showBulkTagSuggestions(this)" 
                    onkeydown="handleBulkTagKeydown(event, this)" 
                    class="b-tag w-full p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border-none outline-none focus:ring-1 focus:ring-indigo-500 text-xs text-purple-500 font-bold" 
@@ -1956,7 +2091,7 @@
             </div>
         </div>
 
-        <input type="text" placeholder="Hint" class="b-cell-hint ${isHint} b-hint w-full p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border-none outline-none focus:ring-1 focus:ring-indigo-500 text-xs text-amber-500" value="${data.hint||''}">
+        <input type="text" data-i18n-placeholder="placeholder_volcab_hint" placeholder="${t('placeholder_volcab_hint')}" class="b-cell-hint ${isHint} b-hint w-full p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border-none outline-none focus:ring-1 focus:ring-indigo-500 text-xs text-amber-500" value="${data.hint||''}">
         <button onclick="this.parentElement.remove()" class="text-slate-300 hover:text-rose-500 pt-3"><i class="fas fa-trash"></i></button>
     `;
     
