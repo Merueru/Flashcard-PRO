@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flashcard Pro - V.1.5.5 </title>
+    <title>Flashcard Pro - V.1.5.5a </title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔖</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
@@ -63,7 +63,7 @@
     <div id="loadingOverlay" class="fixed inset-0 z-[100] bg-slate-900 flex flex-col items-center justify-center text-white">
         <div class="w-16 h-16 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mb-4"></div>
         <h2 class="text-xl font-bold animate-pulse">กำลังโหลดข้อมูล...</h2>
-        <p class="text-sm text-slate-400 mt-2">Flashcard Pro 1.5.5</p>
+        <p class="text-sm text-slate-400 mt-2">Flashcard Pro 1.5.5a</p>
     </div>
 
     <nav class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b dark:border-slate-800 px-4 md:px-6 py-3 flex justify-between items-center sticky top-0 z-50 transition-colors">
@@ -71,7 +71,7 @@
             <div class="flex items-center space-x-2 cursor-pointer group" onclick="toggleView('play')">
                 <div class="bg-indigo-600 p-2.5 rounded-xl text-white shadow-lg shadow-indigo-500/30 group-hover:scale-110 transition-transform"><i class="fas fa-brain"></i></div>
                 <h1 class="text-xl font-bold tracking-tight hidden md:block">Flashcard <span class="text-indigo-600 dark:text-indigo-400">Pro</span>
-                <span class="text-xs bg-emerald-500 text-white px-1.5 py-0.5 rounded ml-1">v1.5.5</span></h1>
+                <span class="text-xs bg-emerald-500 text-white px-1.5 py-0.5 rounded ml-1">v1.5.5a</span></h1>
             </div>
             <div class="hidden lg:flex items-center space-x-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-2xl">
                 <button onclick="toggleView('manage')" class="px-4 py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-700 hover:shadow-sm transition flex items-center">
@@ -133,7 +133,7 @@
                     </div>
                     <input type="text" id="userNameInput" data-i18n-placeholder="placeholder_username" placeholder="พิมพ์ชื่อผู้เล่น..." class="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border-2 border-transparent focus:border-indigo-500 outline-none text-center font-bold text-lg transition-all shadow-sm">
                     <div class="flex gap-2" id="loginActions">
-                         <button id="loginBtn" onclick="login()" class="w-full bg-indigo-600 text-white py-4 rounded-2xl font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-500/30" title="login" data-i18n="btn_login">เข้าใช้งาน</button>
+                         <button id="loginBtn" onclick="login(); toggleView('play')" class="w-full bg-indigo-600 text-white py-4 rounded-2xl font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-500/30" title="login" data-i18n="btn_login">เข้าใช้งาน</button>
                          <button id="cancelEditBtn" onclick="cancelEditUser()" class="hidden w-1/3 bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 py-4 rounded-2xl font-bold hover:bg-slate-300 dark:hover:bg-slate-700 transition" data-i18n="btn_cancel">ยกเลิก</button>
                     </div>
                 </div>
@@ -694,9 +694,10 @@
                 label_cat: "หมวดหมู่", btn_select_all: "เลือกทั้งหมด", label_tag: "แท็ก (เลือกหลายข้อได้)", mastery_desc: "วนซ้ำข้อที่ผิดจนกว่าจะถูก",
                 label_amount: "จำนวนข้อ", btn_start: "เริ่มเลย", confirm_title: "ยืนยัน?", btn_confirm: "ยืนยัน",
                 txt_score: "Score", txt_max: "Max", txt_words: "คำศัพท์", txt_open: "เปิดดู", txt_confirm_del: "ลบคำศัพท์นี้?",
-                txt_confirm_del_profile: "ลบโปรไฟล์นี้?", txt_warn_profile: "ข้อมูลและคำศัพท์ทั้งหมดจะหายไป", txt_double_confirm: "กดลบแล้วจะเอาคืนไม่ได้",
+                txt_confirm_del_profile: "ลบโปรไฟล์นี้?", txt_warn_profile: "ข้อมูลและคำศัพท์ทั้งหมดจะหายไป", txt_double_confirm: "กดลบแล้วจะเอาคืนไม่ได้", txt_last_chance: "เตือนครั้งสุดท้าย!",
+                txt_all_data_of: "ข้อมูลคำศัพท์และสถิติทั้งหมดของ", txt_will_be_deleted: "จะหายไปถาวร",
                 txt_confirm_del_group: "ลบรายการที่เลือก?", txt_deleted: "ลบแล้ว", txt_no_words: "ไม่มีคำศัพท์",
-                txt_no_stats: "ยังไม่มีข้อมูล", txt_no_history: "ยังไม่มีประวัติการเล่น", txt_confirm_clear: "ล้างสถิติ?",
+                txt_no_stats: "ยังไม่มีข้อมูล", txt_no_history: "ยังไม่มีประวัติการเล่น", txt_confirm_clear: "ล้างสถิติ?", txt_confirm_clear_today: "ล้างสถิติของวันนี้?", txt_confirm_clear_week: "ล้างสถิติ 7 วันล่าสุด?", 
                 txt_forgot_count: "ลืม %n ครั้ง" , msg_exit_quiz: "ออกจากแบบทดสอบ?",
                 placeholder_volcab_word: "คำศัพท์...", placeholder_volcab_meaning: "ความหมาย...", placeholder_volcab_reading: "คำอ่าน...",
                 btn_save_draft: "บันทึกร่าง", placeholder_volcab_category: "หมวดหมู่", placeholder_volcab_tag: "แท็ก1,แท็ก2...",placeholder_volcab_hint: "คำใบ้",
@@ -730,9 +731,11 @@
                 label_cat: "Categories", btn_select_all: "Select All", label_tag: "Tags (Multi-select)", mastery_desc: "Repeat wrong cards until correct",
                 label_amount: "Amount", btn_start: "Start", confirm_title: "Confirm?", btn_confirm: "Confirm",
                 txt_score: "Score", txt_max: "Max", txt_words: "Words", txt_open: "Open", txt_confirm_del: "Delete this card?",
-                txt_confirm_del_profile: "Delete this profile?", txt_warn_profile: "All data and words will be lost", txt_double_confirm: "Cannot be undone!",
+                txt_confirm_del_profile: "Delete this profile?", txt_warn_profile: "All data and words will be lost", txt_double_confirm: "Cannot be undone!", txt_last_chance: "Last chance to cancel!",
+                txt_all_data_of: "All data of", txt_will_be_deleted: "will be deleted",
                 txt_confirm_del_group: "Delete selected?", txt_deleted: "Deleted", txt_no_words: "No words found",
-                txt_no_stats: "No data", txt_no_history: "No history", txt_confirm_clear: "Clear statistics?",
+                txt_no_stats: "No data", txt_no_history: "No history", txt_confirm_clear: "Clear statistics?", txt_confirm_clear_today: "Clear today's statistics?", txt_confirm_clear_week: "Clear last 7 days' statistics?",
+                txt_forgot_count: "ลืม %n ครั้ง" , msg_exit_quiz: "ออกจากแบบทดสอบ?",
                 txt_forgot_count: "Forgot %n times" , msg_exit_quiz: "Exit quiz?",
                 placeholder_volcab_word: "word...", placeholder_volcab_meaning: "meaning...", placeholder_volcab_reading: "reading...",
                 btn_save_draft: "Save Draft", placeholder_volcab_category: "category", placeholder_volcab_tag: "tag1,tag2...",placeholder_volcab_hint: "hint",
@@ -767,8 +770,10 @@
                 label_cat: "カテゴリ", btn_select_all: "全選択", label_tag: "タグ (複数選択可)", mastery_desc: "正解するまで繰り返す",
                 label_amount: "問題数", btn_start: "スタート", confirm_title: "確認", btn_confirm: "確認",
                 txt_score: "スコア", txt_max: "最大", txt_words: "単語", txt_open: "開く", txt_confirm_del: "削除しますか？",
+                txt_confirm_del_profile: "プロファイルを削除しますか？", txt_warn_profile: "データと単語はすべて失われます", txt_double_confirm: "取り消すことはできません" , txt_last_chance: "最後のチャンス！",
+                txt_all_data_of: "すべてのデータ", txt_will_be_deleted: "は削除されます",
                 txt_confirm_del_group: "選択項目を削除？", txt_deleted: "削除しました", txt_no_words: "単語が見つかりません",
-                txt_no_stats: "データなし", txt_no_history: "履歴なし", txt_confirm_clear: "統計を消去しますか？",
+                txt_no_stats: "データなし", txt_no_history: "履歴なし", txt_confirm_clear: "統計を消去しますか？", txt_confirm_clear_today: "今日の統計を消去しますか？", txt_confirm_clear_week: "過去7日間の統計を消去しますか？",
                 txt_forgot_count: "忘れた回数: %n",
                 msg_exit_quiz: "クイズを終了しますか？",
                 placeholder_volcab_word: "単語...",
@@ -806,8 +811,10 @@
                 label_cat: "分类", btn_select_all: "全选", label_tag: "标签 (多选)", mastery_desc: "重复错误直到正确",
                 label_amount: "数量", btn_start: "开始", confirm_title: "确认？", btn_confirm: "确认",
                 txt_score: "分数", txt_max: "最大", txt_words: "词汇", txt_open: "打开", txt_confirm_del: "删除此卡片？",
+                txt_confirm_del_profile: "删除此配置文件？", txt_warn_profile: "所有数据和词汇将丢失", txt_double_confirm: "无法撤销！", txt_last_chance: "无法撤销！最后的机会！",
+                txt_all_data_of: "所有数据", txt_will_be_deleted: "将被删除",
                 txt_confirm_del_group: "删除所选？", txt_deleted: "已删除", txt_no_words: "未找到词汇",
-                txt_no_stats: "无数据", txt_no_history: "无历史记录", txt_confirm_clear: "清除统计？",
+                txt_no_stats: "无数据", txt_no_history: "无历史记录", txt_confirm_clear: "清除统计？", txt_confirm_clear_today: "清除今日统计？", txt_confirm_clear_week: "清除本周统计？",
                 txt_forgot_count: "忘记 %n 次",
                 msg_exit_quiz: "退出测验？",
                 placeholder_volcab_word: "词汇...",
@@ -844,9 +851,10 @@
                 label_cat: "카테고리", btn_select_all: "전체 선택", label_tag: "태그 (다중 선택 가능)", mastery_desc: "맞을 때까지 틀린 문제 반복",
                 label_amount: "문제 수", btn_start: "시작하기", confirm_title: "확인하시겠습니까?", btn_confirm: "확인",
                 txt_score: "점수", txt_max: "최대", txt_words: "단어", txt_open: "열기", txt_confirm_del: "이 단어를 삭제할까요?",
-                txt_confirm_del_profile: "이 프로필을 삭제할까요?", txt_warn_profile: "모든 데이터와 단어가 사라집니다", txt_double_confirm: "삭제하면 복구할 수 없습니다",
+                txt_confirm_del_profile: "이 프로필을 삭제할까요?", txt_warn_profile: "모든 데이터와 단어가 사라집니다", txt_double_confirm: "삭제하면 복구할 수 없습니다", txt_last_chance: "마지막 기회입니다!",
+                txt_all_data_of: "모든 데이터", txt_will_be_deleted: "는 삭제됩니다",
                 txt_confirm_del_group: "선택한 항목을 삭제할까요?", txt_deleted: "삭제됨", txt_no_words: "단어 없음",
-                txt_no_stats: "데이터 없음", txt_no_history: "플레이 기록 없음", txt_confirm_clear: "통계를 초기화할까요?", txt_forgot_count: "%n번 잊음",
+                txt_no_stats: "데이터 없음", txt_no_history: "플레이 기록 없음", txt_confirm_clear: "통계를 초기화할까요?", txt_forgot_count: "%n번 잊음", txt_confirm_clear_today: "오늘의 통계를 초기화할까요?", txt_confirm_clear_week: "지난 7일의 통계를 초기화할까요?",
                 msg_exit_quiz: "학습을 종료하시겠습니까?",
                 placeholder_volcab_word: "단어 입력...",
                 placeholder_volcab_meaning: "의미 입력...",
@@ -882,9 +890,10 @@
                 label_cat: "Catégories", btn_select_all: "Tout sélectionner", label_tag: "Tags (Sélection multiple)", mastery_desc: "Répéter jusqu'à mémorisation",
                 label_amount: "Nombre de questions", btn_start: "Commencer", confirm_title: "Êtes-vous sûr ?", btn_confirm: "Confirmer",
                 txt_score: "Score", txt_max: "Max", txt_words: "mots", txt_open: "Ouvrir", txt_confirm_del: "Supprimer ce mot ?",
-                txt_confirm_del_profile: "Supprimer ce profil ?", txt_warn_profile: "Toutes les données seront perdues", txt_double_confirm: "Cette action est irréversible",
+                txt_confirm_del_profile: "Supprimer ce profil ?", txt_warn_profile: "Toutes les données seront perdues", txt_double_confirm: "Cette action est irréversible", txt_last_chance: "Dernière chance !",
+                txt_all_data_of: "Toutes les données de", txt_will_be_deleted: "seront supprimées",
                 txt_confirm_del_group: "Supprimer les éléments sélectionnés ?", txt_deleted: "Supprimé", txt_no_words: "Pas de mots",
-                txt_no_stats: "Pas de données", txt_no_history: "Aucun historique", txt_confirm_clear: "Réinitialiser les stats ?", txt_forgot_count: "Oublié %n fois",
+                txt_no_stats: "Pas de données", txt_no_history: "Aucun historique", txt_confirm_clear: "Réinitialiser les stats ?", txt_forgot_count: "Oublié %n fois", txt_confirm_clear_today: "Réinitialiser les stats d'aujourd'hui ?", txt_confirm_clear_week: "Réinitialiser les stats de la semaine dernière ?",
                 msg_exit_quiz: "Quitter le quiz ?",
                 placeholder_volcab_word: "Entrez un mot...",
                 placeholder_volcab_meaning: "Entrez une définition...",
@@ -920,9 +929,10 @@
                 label_cat: "Categorías", btn_select_all: "Seleccionar todo", label_tag: "Etiquetas (Multiselección)", mastery_desc: "Repetir hasta acertar",
                 label_amount: "Número de preguntas", btn_start: "Empezar", confirm_title: "¿Estás seguro?", btn_confirm: "Confirmar",
                 txt_score: "Puntuación", txt_max: "Máx", txt_words: "palabras", txt_open: "Abrir", txt_confirm_del: "¿Eliminar esta palabra?",
-                txt_confirm_del_profile: "¿Eliminar este perfil?", txt_warn_profile: "Se perderán todos los datos", txt_double_confirm: "Esta acción no se puede deshacer",
+                txt_confirm_del_profile: "¿Eliminar este perfil?", txt_warn_profile: "Se perderán todos los datos", txt_double_confirm: "Esta acción no se puede deshacer", txt_last_chance: "¡Última oportunidad para cancelar!",
+                txt_all_data_of: "Todos los datos de", txt_will_be_deleted: "serán eliminados",
                 txt_confirm_del_group: "¿Eliminar seleccionados?", txt_deleted: "Eliminado", txt_no_words: "Sin palabras",
-                txt_no_stats: "Sin datos", txt_no_history: "Sin historial", txt_confirm_clear: "¿Reiniciar estadísticas?", txt_forgot_count: "Olvidado %n veces",
+                txt_no_stats: "Sin datos", txt_no_history: "Sin historial", txt_confirm_clear: "¿Reiniciar estadísticas?", txt_forgot_count: "Olvidado %n veces", txt_confirm_clear_today: "¿Reiniciar estadísticas de hoy?", txt_confirm_clear_week: "¿Reiniciar estadísticas de la semana?", 
                 msg_exit_quiz: "¿Salir del examen?",
                 placeholder_volcab_word: "Escribe una palabra...",
                 placeholder_volcab_meaning: "Escribe un significado...",
@@ -958,9 +968,10 @@
                 label_cat: "Kategorien", btn_select_all: "Alle wählen", label_tag: "Tags (Mehrfachauswahl)", mastery_desc: "Wiederholen bis richtig",
                 label_amount: "Anzahl Fragen", btn_start: "Starten", confirm_title: "Bist du sicher?", btn_confirm: "Bestätigen",
                 txt_score: "Punkte", txt_max: "Max", txt_words: "Wörter", txt_open: "Öffnen", txt_confirm_del: "Wort löschen?",
-                txt_confirm_del_profile: "Profil löschen?", txt_warn_profile: "Alle Daten gehen verloren", txt_double_confirm: "Nicht rückgängig zu machen",
+                txt_confirm_del_profile: "Profil löschen?", txt_warn_profile: "Alle Daten gehen verloren", txt_double_confirm: "Nicht rückgängig zu machen", txt_last_chance: "Letzte Chance, abzubrechen!",
+                txt_all_data_of: "Alle Daten von", txt_will_be_deleted: "werden gelöscht",
                 txt_confirm_del_group: "Auswahl löschen?", txt_deleted: "Gelöscht", txt_no_words: "Keine Wörter",
-                txt_no_stats: "Keine Daten", txt_no_history: "Kein Verlauf", txt_confirm_clear: "Stats zurücksetzen?", txt_forgot_count: "%n mal vergessen",
+                txt_no_stats: "Keine Daten", txt_no_history: "Kein Verlauf", txt_confirm_clear: "Stats zurücksetzen?", txt_forgot_count: "%n mal vergessen", txt_confirm_clear_today: "Heute's Statistics zurücksetzen?", txt_confirm_clear_week: "Letzte 7 Tage Statistics zurücksetzen?",
                 msg_exit_quiz: "Quiz beenden?",
                 placeholder_volcab_word: "Wort eingeben...",
                 placeholder_volcab_meaning: "Bedeutung eingeben...",
@@ -996,9 +1007,10 @@
                 label_cat: "Categorie", btn_select_all: "Seleziona tutto", label_tag: "Tag (Selezione multipla)", mastery_desc: "Ripeti finché non è corretto",
                 label_amount: "Numero di domande", btn_start: "Inizia", confirm_title: "Sei sicuro?", btn_confirm: "Conferma",
                 txt_score: "Punteggio", txt_max: "Max", txt_words: "parole", txt_open: "Apri", txt_confirm_del: "Eliminare questa parola?",
-                txt_confirm_del_profile: "Eliminare questo profilo?", txt_warn_profile: "Tutti i dati andranno persi", txt_double_confirm: "L'azione è irreversibile",
+                txt_confirm_del_profile: "Eliminare questo profilo?", txt_warn_profile: "Tutti i dati andranno persi", txt_double_confirm: "L'azione è irreversibile", txt_last_chance: "Ultima possibilità per annullare!",
+                txt_all_data_of: "Tutti i dati di", txt_will_be_deleted: "saranno eliminati",
                 txt_confirm_del_group: "Eliminare gli elementi selezionati?", txt_deleted: "Eliminato", txt_no_words: "Nessuna parola",
-                txt_no_stats: "Nessun dato", txt_no_history: "Nessuna cronologia", txt_confirm_clear: "Resettare le statistiche?", txt_forgot_count: "Dimenticato %n volte",
+                txt_no_stats: "Nessun dato", txt_no_history: "Nessuna cronologia", txt_confirm_clear: "Resettare le statistiche?", txt_forgot_count: "Dimenticato %n volte", txt_confirm_clear_today: "Resettare le statistiche di oggi?", txt_confirm_clear_week: "Resettare le statistiche della settimana?", 
                 msg_exit_quiz: "Uscire dal quiz?",
                 placeholder_volcab_word: "Inserisci una parola...",
                 placeholder_volcab_meaning: "Inserisci un significato...",
@@ -1034,9 +1046,10 @@
                 label_cat: "Категории", btn_select_all: "Выбрать все", label_tag: "Теги (множественный выбор)", mastery_desc: "Повторять до победного",
                 label_amount: "Количество вопросов", btn_start: "Начать", confirm_title: "Вы уверены?", btn_confirm: "Подтвердить",
                 txt_score: "Счет", txt_max: "Макс", txt_words: "слов", txt_open: "Открыть", txt_confirm_del: "Удалить это слово?",
-                txt_confirm_del_profile: "Удалить этот профиль?", txt_warn_profile: "Все данные будут потеряны", txt_double_confirm: "Это действие необратимо",
+                txt_confirm_del_profile: "Удалить этот профиль?", txt_warn_profile: "Все данные будут потеряны", txt_double_confirm: "Это действие необратимо", txt_last_chance: "Последний шанс отменить!",
+                txt_all_data_of: "Все данные", txt_will_be_deleted: "будут удалены",
                 txt_confirm_del_group: "Удалить выбранные?", txt_deleted: "Удалено", txt_no_words: "Нет слов",
-                txt_no_stats: "Нет данных", txt_no_history: "История пуста", txt_confirm_clear: "Сбросить статистику?", txt_forgot_count: "Забыто %n раз",
+                txt_no_stats: "Нет данных", txt_no_history: "История пуста", txt_confirm_clear: "Сбросить статистику?", txt_forgot_count: "Забыто %n раз", txt_confirm_clear_today: "Сбросить статистику за сегодня?", txt_confirm_clear_week: "Сбросить статистику за неделю?",
                 msg_exit_quiz: "Выйти из квиза?",
                 placeholder_volcab_word: "Введите слово...",
                 placeholder_volcab_meaning: "Введите значение...",
@@ -1072,9 +1085,10 @@
                 label_cat: "Danh mục", btn_select_all: "Chọn tất cả", label_tag: "Thẻ (Chọn nhiều)", mastery_desc: "Lặp lại cho đến khi đúng",
                 label_amount: "Số câu hỏi", btn_start: "Bắt đầu", confirm_title: "Bạn có chắc không?", btn_confirm: "Xác nhận",
                 txt_score: "Điểm", txt_max: "Tối đa", txt_words: "từ", txt_open: "Mở", txt_confirm_del: "Xóa từ này?",
-                txt_confirm_del_profile: "Xóa hồ sơ này?", txt_warn_profile: "Tất cả dữ liệu sẽ bị mất", txt_double_confirm: "Không thể hoàn tác",
+                txt_confirm_del_profile: "Xóa hồ sơ này?", txt_warn_profile: "Tất cả dữ liệu sẽ bị mất", txt_double_confirm: "Không thể hoàn tác", txt_last_chance: "Cơ hội cuối để hủy!",
+                txt_all_data_of: "Tất cả dữ liệu của", txt_will_be_deleted: "sẽ bị xóa",
                 txt_confirm_del_group: "Xóa các mục đã chọn?", txt_deleted: "Đã xóa", txt_no_words: "Không có từ",
-                txt_no_stats: "Không có dữ liệu", txt_no_history: "Chưa có lịch sử", txt_confirm_clear: "Đặt lại thống kê?", txt_forgot_count: "Quên %n lần",
+                txt_no_stats: "Không có dữ liệu", txt_no_history: "Chưa có lịch sử", txt_confirm_clear: "Đặt lại thống kê?", txt_forgot_count: "Quên %n lần", txt_confirm_clear_today: "Đặt lại thống kê hôm nay?", txt_confirm_clear_week: "Đặt lại thống kê tuần này?",
                 msg_exit_quiz: "Thoát bài kiểm tra?",
                 placeholder_volcab_word: "Nhập từ vựng...",
                 placeholder_volcab_meaning: "Nhập nghĩa...",
@@ -1110,9 +1124,10 @@
                 label_cat: "Kategori", btn_select_all: "Pilih Semua", label_tag: "Tag (Pilihan Ganda)", mastery_desc: "Ulangi sampai benar",
                 label_amount: "Jumlah Soal", btn_start: "Mulai", confirm_title: "Apakah Anda yakin?", btn_confirm: "Konfirmasi",
                 txt_score: "Skor", txt_max: "Maks", txt_words: "kata", txt_open: "Buka", txt_confirm_del: "Hapus kata ini?",
-                txt_confirm_del_profile: "Hapus profil ini?", txt_warn_profile: "Semua data akan hilang", txt_double_confirm: "Tidak bisa dibatalkan",
+                txt_confirm_del_profile: "Hapus profil ini?", txt_warn_profile: "Semua data akan hilang", txt_double_confirm: "Tidak bisa dibatalkan", txt_last_chance: "Kesempatan terakhir untuk membatalkan!",
+                txt_all_data_of: "Semua data dari", txt_will_be_deleted: "akan dihapus",
                 txt_confirm_del_group: "Hapus item terpilih?", txt_deleted: "Dihapus", txt_no_words: "Tidak ada kata",
-                txt_no_stats: "Tidak ada data", txt_no_history: "Tidak ada riwayat", txt_confirm_clear: "Reset statistik?", txt_forgot_count: "Lupa %n kali",
+                txt_no_stats: "Tidak ada data", txt_no_history: "Tidak ada riwayat", txt_confirm_clear: "Reset statistik?", txt_forgot_count: "Lupa %n kali", txt_confirm_clear_today: "Reset statistik hari ini?", txt_confirm_clear_week: "Reset statistik minggu ini?",
                 msg_exit_quiz: "Keluar dari kuis?",
                 placeholder_volcab_word: "Masukkan kata...",
                 placeholder_volcab_meaning: "Masukkan makna...",
@@ -1148,9 +1163,10 @@
                 label_cat: "श्रेणियां", btn_select_all: "सभी चुनें", label_tag: "टैग (बहु-चयन)", mastery_desc: "सही होने तक दोहराएं",
                 label_amount: "प्रश्नों की संख्या", btn_start: "शुरू करें", confirm_title: "क्या आप वाकई चाहते हैं?", btn_confirm: "पुष्टि करें",
                 txt_score: "स्कोर", txt_max: "अधिकतम", txt_words: "शब्द", txt_open: "खोलें", txt_confirm_del: "इस शब्द को हटाएं?",
-                txt_confirm_del_profile: "इस प्रोफ़ाइल को हटाएं?", txt_warn_profile: "सारा डेटा खो जाएगा", txt_double_confirm: "इसे वापस नहीं लिया जा सकता",
+                txt_confirm_del_profile: "इस प्रोफ़ाइल को हटाएं?", txt_warn_profile: "सारा डेटा खो जाएगा", txt_double_confirm: "इसे वापस नहीं लिया जा सकता", txt_last_chance: "रद्द करने का आखिरी मौका!",
+                txt_all_data_of: "सभी डेटा का", txt_will_be_deleted: "हटा दिया जाएगा",
                 txt_confirm_del_group: "चयनित आइटम हटाएं?", txt_deleted: "हटा दिया गया", txt_no_words: "कोई शब्द नहीं",
-                txt_no_stats: "कोई डेटा नहीं", txt_no_history: "कोई इतिहास नहीं", txt_confirm_clear: "आंकड़े रीसेट करें?", txt_forgot_count: "%n बार भूले",
+                txt_no_stats: "कोई डेटा नहीं", txt_no_history: "कोई इतिहास नहीं", txt_confirm_clear: "आंकड़े रीसेट करें?", txt_forgot_count: "%n बार भूले", txt_confirm_clear_today: "आज की आंकड़े रीसेट करें?", txt_confirm_clear_week: "इस सप्ताह की आंकड़े रीसेट करें?",
                 msg_exit_quiz: "प्रश्नावली से बाहर निकलें?",
                 placeholder_volcab_word: "एक शब्द लिखें...",
                 placeholder_volcab_meaning: "एक अर्थ लिखें...",
@@ -1186,9 +1202,10 @@
                 label_cat: "Kategorie", btn_select_all: "Zaznacz wszystko", label_tag: "Tagi (Wielokrotny wybór)", mastery_desc: "Powtarzaj do skutku",
                 label_amount: "Liczba pytań", btn_start: "Start", confirm_title: "Czy na pewno?", btn_confirm: "Potwierdź",
                 txt_score: "Wynik", txt_max: "Maks", txt_words: "słów", txt_open: "Otwórz", txt_confirm_del: "Usunąć to słowo?",
-                txt_confirm_del_profile: "Usunąć ten profil?", txt_warn_profile: "Wszystkie dane zostaną utracone", txt_double_confirm: "Tej akcji nie można cofnąć",
+                txt_confirm_del_profile: "Usunąć ten profil?", txt_warn_profile: "Wszystkie dane zostaną utracone", txt_double_confirm: "Tej akcji nie można cofnąć", txt_last_chance: "Ostatnia szansa na cofnięcie!",
+                txt_all_data_of: "Wszystkie dane", txt_will_be_deleted: "zostaną usunięte",
                 txt_confirm_del_group: "Usunąć zaznaczone?", txt_deleted: "Usunięto", txt_no_words: "Brak słów",
-                txt_no_stats: "Brak danych", txt_no_history: "Brak historii", txt_confirm_clear: "Zresetować statystyki?", txt_forgot_count: "Zapomniano %n razy",
+                txt_no_stats: "Brak danych", txt_no_history: "Brak historii", txt_confirm_clear: "Zresetować statystyki?", txt_forgot_count: "Zapomniano %n razy", txt_confirm_clear_today: "Zresetować statystyki z dzisiaj?", txt_confirm_clear_week: "Zresetować statystyki z tygodnia?",
                 msg_exit_quiz: "Wyjść z quizu?",
                 placeholder_volcab_word: "Wpisz słowo...",
                 placeholder_volcab_meaning: "Wpisz znaczenie...",
@@ -1224,9 +1241,10 @@
                 label_cat: "Categorias", btn_select_all: "Selecionar tudo", label_tag: "Tags (Seleção múltipla)", mastery_desc: "Repetir até acertar",
                 label_amount: "Número de questões", btn_start: "Começar", confirm_title: "Tem certeza?", btn_confirm: "Confirmar",
                 txt_score: "Pontuação", txt_max: "Máx", txt_words: "palavras", txt_open: "Abrir", txt_confirm_del: "Excluir esta palavra?",
-                txt_confirm_del_profile: "Excluir este perfil?", txt_warn_profile: "Todos os dados serão perdidos", txt_double_confirm: "Esta ação não pode ser desfeita",
+                txt_confirm_del_profile: "Excluir este perfil?", txt_warn_profile: "Todos os dados serão perdidos", txt_double_confirm: "Esta ação não pode ser desfeita", txt_last_chance: "Última chance para cancelar!",
+                txt_all_data_of: "Todos os dados de", txt_will_be_deleted: "serão excluídos",
                 txt_confirm_del_group: "Excluir itens selecionados?", txt_deleted: "Excluído", txt_no_words: "Sem palavras",
-                txt_no_stats: "Sem dados", txt_no_history: "Sem histórico", txt_confirm_clear: "Resetar estatísticas?", txt_forgot_count: "Esquecido %n vezes",
+                txt_no_stats: "Sem dados", txt_no_history: "Sem histórico", txt_confirm_clear: "Resetar estatísticas?", txt_forgot_count: "Esquecido %n vezes", txt_confirm_clear_today: "Resetar estatísticas de hoje?", txt_confirm_clear_week: "Resetar estatísticas da semana?",
                 msg_exit_quiz: "Sair do quiz?",
                 placeholder_volcab_word: "Digite uma palavra...",
                 placeholder_volcab_meaning: "Digite um significado...",
@@ -2588,9 +2606,9 @@
                     const title = document.getElementById('confirmTitle');
                     const msg = document.getElementById('confirmMsg');
                     
-                    title.innerText = "เตือนครั้งสุดท้าย!"; // Custom text for impact
+                    title.innerText = t('txt_last_chance'); // Custom text for impact
                     title.className = "text-2xl font-black text-rose-500 animate-pulse";
-                    msg.innerHTML = `ข้อมูลคำศัพท์และสถิติทั้งหมดของ <b>${name}</b> จะหายไปถาวร<br>${t('txt_double_confirm')}`;
+                    msg.innerHTML = ` ${t('txt_all_data_of')} <b>${name}</b> ${t('txt_will_be_deleted')}<br>${t('txt_double_confirm')}`;
                     
                     // Delay button enable
                     btn.classList.add('btn-disabled');
@@ -2644,8 +2662,8 @@
         // --- Fix Point 3: Clear Stats Logic ---
         async function clearStats(period) {
             let msg = t('txt_confirm_clear');
-            if (period === 'today') msg = "ล้างสถิติของวันนี้?"; // Custom text
-            if (period === 'week') msg = "ล้างสถิติ 7 วันล่าสุด?";
+            if (period === 'today') msg = t('txt_confirm_clear_today'); // Custom text
+            if (period === 'week') msg = t('txt_confirm_clear_week'); // Custom text
 
             showConfirm(msg, async () => {
                 try {
